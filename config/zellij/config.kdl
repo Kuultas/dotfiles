@@ -192,6 +192,11 @@ keybinds {
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+        // Ctrl+arrows: move focus between panes (Alt+hjkl above is eaten by GlazeWM).
+        bind "Ctrl Left"  { MoveFocus "Left"; }
+        bind "Ctrl Right" { MoveFocus "Right"; }
+        bind "Ctrl Down"  { MoveFocus "Down"; }
+        bind "Ctrl Up"    { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
