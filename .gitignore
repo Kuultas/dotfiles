@@ -1,0 +1,12 @@
+# Bootstrap backups
+*.bak.*
+
+# Local-only overrides (never commit)
+*.local
+.env
+.env.*
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store

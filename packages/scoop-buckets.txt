@@ -1,0 +1,4 @@
+# scoop buckets (one per line, # for comments)
+extras
+nerd-fonts
+versions

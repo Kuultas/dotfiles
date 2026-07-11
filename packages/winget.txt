@@ -1,0 +1,11 @@
+# winget package IDs (one per line, # for comments)
+
+# --- Window management ---
+glzr-io.GlazeWM
+
+# --- Shell / terminal ---
+wez.wezterm
+
+# --- Misc you'll probably want ---
+# RamenSoftware.Windhawk
+# rocksdanister.LivelyWallpaper

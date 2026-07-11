@@ -1,0 +1,22 @@
+# scoop apps (one per line, # for comments)
+# Window management (GlazeWM) + status bar (zebar) come via winget.txt
+
+# --- Spotify customization ---
+spicetify-cli
+
+# --- Shell / terminal ---
+starship
+fastfetch
+zoxide
+fzf
+eza
+bat
+lazygit
+
+# --- Terminal multiplexer / file manager / monitors ---
+zellij
+yazi
+btop
+
+# --- Fonts ---
+JetBrainsMono-NF

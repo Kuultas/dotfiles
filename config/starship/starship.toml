@@ -1,0 +1,58 @@
+format = """$username@$hostname $directory $git_branch $git_status $cmd_duration
+$character"""
+
+[username]
+show_always = true
+style_user = "bold green"
+style_root = "bold red"
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style) "
+style = "bold dimmed blue"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+
+[git_status]
+conflicted = "🏳"
+deleted = "🗑"
+renamed = "👅"
+modified = "📝"
+staged = "➕"
+untracked = "❓"
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+style = "bold yellow"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold yellow)"
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[python]
+symbol = "🐍 "
+
+[nodejs]
+symbol = "📦 "
+
+[rust]
+symbol = "🦀 "
+
+[golang]
+symbol = "🐹 "
+
+[zig]
+symbol = "⚡ "
