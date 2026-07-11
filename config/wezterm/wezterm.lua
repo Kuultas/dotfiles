@@ -43,8 +43,8 @@ config.line_height = 1.05
 -- ── Window ──────────────────────────────────────────────────────────────────
 config.window_decorations = 'RESIZE'        -- no title bar, keep resize edges
 config.window_padding = { left = 14, right = 14, top = 12, bottom = 8 }
--- Transparency knobs: lower opacity = more see-through. Backdrop = the blur style.
-config.window_background_opacity = 0.6      -- lower = glassier (~0.5) .. higher = more solid (~0.9)
+-- Transparency (blur shows on the focused window; Windows drops it when unfocused).
+config.window_background_opacity = 0.5      -- lower = glassier; below ~0.5 risks contrast
 config.win32_system_backdrop = 'Acrylic'    -- 'Acrylic' = frosted blur | 'Mica' = wallpaper tint | delete line = sharp see-through
 
 -- ── Tab bar ──────────────────────────────────────────────────────────────────
