@@ -7,7 +7,6 @@ spicetify-cli
 # --- Shell / terminal ---
 starship
 fastfetch
-posh-git
 lazygit
 
 # --- Terminal multiplexer / file manager / monitors ---
