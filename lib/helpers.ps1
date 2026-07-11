@@ -59,7 +59,6 @@ function Get-DotfileLinks {
         @{ Source = "$Root\config\glazewm\config.yaml";                             Target = "$env:USERPROFILE\.glzr\glazewm\config.yaml" }
         @{ Source = "$Root\config\zebar\settings.json";                             Target = "$env:USERPROFILE\.glzr\zebar\settings.json" }
         @{ Source = "$Root\config\powershell\Microsoft.PowerShell_profile.ps1";      Target = "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" }
-        @{ Source = "$Root\config\windows-terminal\settings.json";                   Target = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" }
         @{ Source = "$Root\config\wezterm\wezterm.lua";                              Target = "$env:USERPROFILE\.config\wezterm\wezterm.lua" }
         @{ Source = "$Root\config\starship\starship.toml";                           Target = "$env:USERPROFILE\.config\starship.toml" }
         @{ Source = "$Root\config\spicetify\config-xpui.ini";                        Target = "$env:APPDATA\spicetify\config-xpui.ini" }
