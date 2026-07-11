@@ -3,7 +3,6 @@ function global:git {
     Import-Module posh-git
     & git @args
 }
-. "$env:USERPROFILE\.powertools\loader.ps1"
 
 # Claude Code multi-account functions
 function claude1 { claude $args }

@@ -1,5 +1,3 @@
 # PowerShell modules (one per line)
 PSReadLine
-Terminal-Icons
 posh-git
-PSFzf
