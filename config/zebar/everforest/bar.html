@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      :root {
+        --bg: rgba(39, 46, 51, 0.72);
+        --fg: #d3c6aa;
+        --green: #a7c080;
+        --aqua: #83c092;
+        --orange: #e69875;
+        --gray: #859289;
+        --dark: #272e33;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 14px;
+        font-family: "JetBrainsMono NF", "JetBrainsMono Nerd Font", monospace;
+        font-size: 13px;
+        color: var(--fg);
+        background: var(--bg);
+        backdrop-filter: blur(10px);
+        user-select: none;
+      }
+      .section { display: flex; align-items: center; gap: 12px; }
+      .workspaces { gap: 6px; }
+      .ws {
+        padding: 2px 9px;
+        border-radius: 6px;
+        color: var(--gray);
+        cursor: pointer;
+        transition: background 0.12s ease, color 0.12s ease;
+      }
+      .ws:hover { color: var(--fg); background: rgba(255, 255, 255, 0.06); }
+      .ws.active { background: var(--green); color: var(--dark); font-weight: 600; }
+      .clock { font-weight: 500; letter-spacing: 0.3px; }
+      .stat { color: var(--gray); }
+      .stat b { color: var(--aqua); font-weight: 600; }
+      .stat.bat b { color: var(--green); }
+      .stat.warn b { color: var(--orange); }
+    </style>
+  </head>
+  <body>
+    <div class="section workspaces" id="workspaces"></div>
+    <div class="section"><span class="clock" id="clock"></span></div>
+    <div class="section" id="stats"></div>
+
+    <script type="module">
+      import * as zebar from 'https://esm.sh/zebar@3.3.1';
+
+      const providers = zebar.createProviderGroup({
+        glazewm: { type: 'glazewm' },
+        cpu: { type: 'cpu' },
+        memory: { type: 'memory' },
+        date: { type: 'date', formatting: 'ccc d LLL   h:mm a' },
+        battery: { type: 'battery' },
+      });
+
+      const $ws = document.getElementById('workspaces');
+      const $clock = document.getElementById('clock');
+      const $stats = document.getElementById('stats');
+
+      providers.onOutput((o) => {
+        if (o.glazewm) {
+          $ws.replaceChildren();
+          for (const w of o.glazewm.currentWorkspaces) {
+            const el = document.createElement('div');
+            el.className = 'ws' + (w.hasFocus ? ' active' : '');
+            el.textContent = w.displayName ?? w.name;
+            el.onclick = () => o.glazewm.runCommand(`focus --workspace ${w.name}`);
+            $ws.appendChild(el);
+          }
+        }
+
+        if (o.date) $clock.textContent = o.date.formatted;
+
+        const parts = [];
+        if (o.cpu)
+          parts.push(`<span class="stat${o.cpu.usage > 80 ? ' warn' : ''}">CPU <b>${Math.round(o.cpu.usage)}%</b></span>`);
+        if (o.memory)
+          parts.push(`<span class="stat${o.memory.usage > 85 ? ' warn' : ''}">RAM <b>${Math.round(o.memory.usage)}%</b></span>`);
+        if (o.battery && o.battery.chargePercent != null)
+          parts.push(`<span class="stat bat">BAT <b>${Math.round(o.battery.chargePercent)}%${o.battery.isCharging ? '+' : ''}</b></span>`);
+        $stats.innerHTML = parts.join('');
+      });
+    </script>
+  </body>
+</html>

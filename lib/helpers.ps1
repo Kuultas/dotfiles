@@ -58,6 +58,8 @@ function Get-DotfileLinks {
     @(
         @{ Source = "$Root\config\glazewm\config.yaml";                             Target = "$env:USERPROFILE\.glzr\glazewm\config.yaml" }
         @{ Source = "$Root\config\zebar\settings.json";                             Target = "$env:USERPROFILE\.glzr\zebar\settings.json" }
+        @{ Source = "$Root\config\zebar\everforest\zpack.json";                     Target = "$env:USERPROFILE\.glzr\zebar\everforest\zpack.json" }
+        @{ Source = "$Root\config\zebar\everforest\bar.html";                       Target = "$env:USERPROFILE\.glzr\zebar\everforest\bar.html" }
         @{ Source = "$Root\config\powershell\Microsoft.PowerShell_profile.ps1";      Target = "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" }
         @{ Source = "$Root\config\wezterm\wezterm.lua";                              Target = "$env:USERPROFILE\.config\wezterm\wezterm.lua" }
         @{ Source = "$Root\config\zellij\config.kdl";                              Target = "$env:APPDATA\Zellij\config\config.kdl" }
