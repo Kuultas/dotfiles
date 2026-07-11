@@ -1,3 +1,2 @@
 # PowerShell modules (one per line)
-# posh-git is installed via scoop (see scoop.txt), not here.
 PSReadLine

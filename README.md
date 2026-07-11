@@ -41,7 +41,7 @@ lib/helpers.ps1          shared functions
 ## Daily use
 - Edit a file in `config/`, save -> live system sees it (symlink).
 - New tool: append to `packages/scoop.txt`, run `bootstrap.ps1 -SkipConfig -SkipTweaks`.
-- New config: drop the file in `config/<app>/`, add an entry to `Link-Configs` in `lib/helpers.ps1`, run `bootstrap.ps1`.
+- New config: drop the file in `config/<app>/`, add an entry to `Get-DotfileLinks` in `lib/helpers.ps1`, run `bootstrap.ps1`.
 
 ## Bootstrap flags
 - `-SkipPackages` -- don't install anything, just relink/tweak
