@@ -62,6 +62,7 @@ function Get-DotfileLinks {
         @{ Source = "$Root\config\wezterm\wezterm.lua";                              Target = "$env:USERPROFILE\.config\wezterm\wezterm.lua" }
         @{ Source = "$Root\config\zellij\config.kdl";                              Target = "$env:APPDATA\Zellij\config\config.kdl" }
         @{ Source = "$Root\config\zellij\layouts\default.kdl";                      Target = "$env:APPDATA\Zellij\config\layouts\default.kdl" }
+        @{ Source = "$Root\config\zellij\themes\everforest.kdl";                    Target = "$env:APPDATA\Zellij\config\themes\everforest.kdl" }
         @{ Source = "$Root\config\starship\starship.toml";                           Target = "$env:USERPROFILE\.config\starship.toml" }
         @{ Source = "$Root\config\spicetify\config-xpui.ini";                        Target = "$env:APPDATA\spicetify\config-xpui.ini" }
     )

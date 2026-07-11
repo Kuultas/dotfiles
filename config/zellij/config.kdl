@@ -306,6 +306,7 @@ web_client {
 // Default: default
 // 
 // theme "dracula"
+theme "everforest"
  
 // Theme to use when the host terminal reports a dark color palette.
 // Requires `theme_light` to also be set; otherwise `theme` is used.
