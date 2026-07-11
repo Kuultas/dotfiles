@@ -43,7 +43,7 @@ Write-Header 'dotfiles bootstrap'
 Write-Host "  repo: $root"
 
 if (-not $SkipPackages) { Install-Packages -Root $root }
-if (-not $SkipConfig)   { Link-Configs    -Root $root }
+if (-not $SkipConfig)   { Link-Configs -Root $root; Deploy-ZebarPacks -Root $root }
 if (-not $SkipTweaks) {
     $tweaks = Join-Path $root 'windows\tweaks.ps1'
     if (Test-Path -LiteralPath $tweaks) { & $tweaks }

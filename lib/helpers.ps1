@@ -58,8 +58,6 @@ function Get-DotfileLinks {
     @(
         @{ Source = "$Root\config\glazewm\config.yaml";                             Target = "$env:USERPROFILE\.glzr\glazewm\config.yaml" }
         @{ Source = "$Root\config\zebar\settings.json";                             Target = "$env:USERPROFILE\.glzr\zebar\settings.json" }
-        @{ Source = "$Root\config\zebar\everforest\zpack.json";                     Target = "$env:USERPROFILE\.glzr\zebar\everforest\zpack.json" }
-        @{ Source = "$Root\config\zebar\everforest\bar.html";                       Target = "$env:USERPROFILE\.glzr\zebar\everforest\bar.html" }
         @{ Source = "$Root\config\powershell\Microsoft.PowerShell_profile.ps1";      Target = "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" }
         @{ Source = "$Root\config\wezterm\wezterm.lua";                              Target = "$env:USERPROFILE\.config\wezterm\wezterm.lua" }
         @{ Source = "$Root\config\zellij\config.kdl";                              Target = "$env:APPDATA\Zellij\config\config.kdl" }
@@ -155,4 +153,25 @@ function Link-Configs {
     foreach ($link in Get-DotfileLinks -Root $Root) {
         Set-DotfileLink -Source $link.Source -Target $link.Target
     }
+}
+
+
+function Deploy-ZebarPacks {
+    # zebar refuses to serve symlinked widget files (they resolve outside the pack
+    # dir and fail its path check), so zebar packs are COPIED as real files.
+    # Re-run bootstrap after editing a zebar pack.
+    param([string]$Root)
+    Write-Header 'Deploying zebar packs (copied, not symlinked)'
+    $src  = Join-Path $Root 'config\zebar'
+    $dest = "$env:USERPROFILE\.glzr\zebar"
+    Get-ChildItem -LiteralPath $src -Directory -ErrorAction SilentlyContinue |
+        Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName 'zpack.json') } |
+        ForEach-Object {
+            $target = Join-Path $dest $_.Name
+            if (-not (Test-Path -LiteralPath $target)) {
+                New-Item -ItemType Directory -Path $target -Force | Out-Null
+            }
+            Copy-Item -Path (Join-Path $_.FullName '*') -Destination $target -Recurse -Force
+            Write-Done "zebar pack: $($_.Name)"
+        }
 }
