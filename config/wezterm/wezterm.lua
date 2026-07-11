@@ -1,6 +1,9 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+-- ── Default shell: PowerShell 7 (pwsh), not the legacy 5.1 (powershell.exe) ──
+config.default_prog = { 'pwsh.exe', '-NoLogo' }
+
 -- ── Everforest Dark (same hexes as the Windows Terminal scheme) ────────────
 config.colors = {
   foreground    = '#D3C6AA',
